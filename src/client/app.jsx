@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Physicians from './physicians.jsx';
 import Appointment from './appointment.jsx';
+import './app.css';
 
 class App extends React.Component {
 
@@ -61,6 +62,7 @@ class App extends React.Component {
         {appointments.map((appt, i) => {
           return <Appointment
                   key={i}
+                  id={i+1}
                   patient={appt.patient} 
                   appt={appt.appt} 
                   kind={appt.kind} />
@@ -69,10 +71,14 @@ class App extends React.Component {
     }
     return (
       <div>
-        <h1>Notable</h1>
-        <div class='container'>
-          <Physicians physicians={physicians} getappt={this.handleAppointments}/>
-          {getAppt}
+        <div class="container">
+          <div class="col-1">
+            <h1>Notable</h1>
+            <Physicians physicians={physicians} getappt={this.handleAppointments} />
+          </div>
+          <div class="col-2">
+            {getAppt}
+          </div>
         </div>
       </div>
     )

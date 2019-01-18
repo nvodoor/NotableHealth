@@ -1,10 +1,10 @@
 import React from 'react';
 
 
-const Appointment = ({key,patient, appt, kind}) => {
+const Appointment = ({key,id,patient, appt, kind}) => {
   return (
-    <div>
-      <span>{key}</span>
+    <div key={key}>
+      <span>{id}</span>
       <span>{patient}</span>
       <span>{appt}</span>
       <span>{kind}</span>
