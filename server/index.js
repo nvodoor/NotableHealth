@@ -21,8 +21,8 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-app.get('/physicians/', (req, res) => {
-  let querystring = 'SELECT physician from physician';
+app.get('/physicians', (req, res) => {
+  let querystring = 'SELECT physician from physicians';
   connection.query(querystring, (error, result) => {
     if (error) {
       console.log(error);
