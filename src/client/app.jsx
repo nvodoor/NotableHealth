@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Physicians from './physicians.jsx';
+import Appointment from './appointment.jsx';
 
 class App extends React.Component {
 
@@ -9,6 +10,8 @@ class App extends React.Component {
     this.state = {
       physicians: [],
       appointments: [],
+      physician: '',
+      email: '',
     }
 
     this.handleAppointments = this.handleAppointments.bind(this);
@@ -34,17 +37,42 @@ class App extends React.Component {
     fetch(`physicians/${name}`)
     .then(res => res.json())
     .then((data) => {
-      console.log(data);
+      this.setState({
+        appointments: data,
+        physician: data[0].physician,
+        email: data[0].email
+      })
     })
   }
 
   render() {
-    const { physicians, appointments } = this.state;
+    const { physicians, appointments, physician, email } = this.state;
+
+    let getAppt;
+
+    if (appointments.length === 0) {
+      getAppt = <p>There are no appointments here.</p>
+    } else {
+      getAppt = <div>
+        <div>
+          <h1>{physician}</h1>
+          <p>{email}</p>
+        </div>
+        {appointments.map((appt, i) => {
+          return <Appointment
+                  key={i}
+                  patient={appt.patient} 
+                  appt={appt.appt} 
+                  kind={appt.kind} />
+        })}
+      </div>
+    }
     return (
       <div>
         <h1>Notable</h1>
         <div class='container'>
           <Physicians physicians={physicians} getappt={this.handleAppointments}/>
+          {getAppt}
         </div>
       </div>
     )
