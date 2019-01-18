@@ -54,10 +54,17 @@ class App extends React.Component {
     if (appointments.length === 0) {
       getAppt = <p>There are no appointments here.</p>
     } else {
-      getAppt = <div>
+      getAppt = 
+      <div>
         <div>
           <h1>{physician}</h1>
           <p>{email}</p>
+        </div>
+        <div className="highlight-header">
+          <span className="header">#</span>
+          <span className="header">Name</span>
+          <span className="header">Time</span>
+          <span className="header">Kind</span>
         </div>
         {appointments.map((appt, i) => {
           return <Appointment
@@ -71,12 +78,13 @@ class App extends React.Component {
     }
     return (
       <div>
-        <div class="container">
-          <div class="col-1">
+        <div className="container">
+          <div className="col-1">
             <h1>Notable</h1>
-            <Physicians physicians={physicians} getappt={this.handleAppointments} />
+            <h2>Physicians</h2>
+            <Physicians physicians={physicians} physician={physician} getappt={this.handleAppointments} />
           </div>
-          <div class="col-2">
+          <div className="col-2">
             {getAppt}
           </div>
         </div>

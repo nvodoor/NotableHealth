@@ -1,11 +1,15 @@
 import React from 'react';
+import './physicians.css';
 
-const Physicians = ({physicians, getappt}) => {
+const Physicians = ({physicians, getappt, physician}) => {
   return (
     <div>
-      <ul>
+      <ul className="ul-1">
         {physicians.map((phys, i) => {
-          return <li key={i} onClick={getappt}>{phys}</li>
+          if (physician === phys) {
+            return <li key={i} className="li-1 highlight" onClick={getappt}>{phys}</li>
+          }
+          return <li key={i} className="li-1" onClick={getappt}>{phys}</li>
         })}
       </ul>
     </div>
