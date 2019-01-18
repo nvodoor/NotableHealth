@@ -14,7 +14,8 @@ app.use(morgan());
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
+  user: '',
+  password: '',
   database: 'notable',
   port: '3306'
 });
