@@ -1,5 +1,6 @@
 import React from 'react';
 import './physicians.css';
+import PropTypes from 'prop-types';
 
 const Physicians = ({physicians, getappt, physician}) => {
   return (
@@ -17,3 +18,9 @@ const Physicians = ({physicians, getappt, physician}) => {
 }
 
 export default Physicians;
+
+Physicians.PropTypes = {
+  physicians: PropTypes.array,
+  getappt: PropTypes.func,
+  physician: PropTypes.string
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './appointment.css';
+import PropTypes from 'prop-types';
 
 const Appointment = ({key,id,patient, appt, kind}) => {
   return (
@@ -13,3 +14,10 @@ const Appointment = ({key,id,patient, appt, kind}) => {
 }
 
 export default Appointment;
+
+Appointment.Proptypes = {
+  id: PropTypes.number,
+  patient: PropTypes.string,
+  appt: PropTypes.string,
+  kind: PropTypes.string
+}
